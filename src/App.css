@@ -1,38 +1,106 @@
-.App {
-  text-align: center;
+/* RESET */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button, input {
+    outline: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* GOOGLE FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* DEFAULT FONT */
+p, button, li, h1, h2, h3, h4, span, b {
+    font-family: "Poppins", sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* ROOT VARIABLES (RESPONSIVE) */
+:root {
+    /* border */
+    --border-1: 1px solid black;
+
+    /* colors */
+    --primary-color: #2563eb;
+    --white: #ffffff;
+    --black: #000000;
+    --shadow-color: rgba(242, 237, 237, 0.438);
+    --gray:gray;
+
+    /* responsive font sizes */
+    --font-size-16: clamp(14px, 1vw, 16px);
+    --font-size-18: clamp(15px, 1.2vw, 18px);
+    --font-size-20: clamp(16px, 1.4vw, 20px);
+    --font-size-25: clamp(18px, 1.6vw, 25px);
+    --font-size-30: clamp(20px, 2vw, 30px);
+    --font-size-35: clamp(24px, 2.4vw, 35px);
+    --font-size-40: clamp(28px, 3vw, 40px);
+    --font-size-45: clamp(30px, 3.5vw, 45px);
+    --font-size-50: clamp(32px, 4vw, 50px);
+    --font-size-55: clamp(36px, 5vw, 55px);
+    --font-size-60: clamp(40px, 6vw, 60px);
+
+    /* font weights */
+    --font-weight-400: 400;
+    --font-weight-500: 500;
+    --font-weight-600: 600;
+    --font-weight-700: 700;
+    --font-weight-800: 800;
+    --font-weight-900: 900;
+
+    /* gaps (responsive) */
+    --gap-10: clamp(6px, 1vw, 10px);
+    --gap-20: clamp(10px, 2vw, 20px);
+    --gap-30: clamp(15px, 3vw, 30px);
+    --gap-40: clamp(20px, 4vw, 40px);
+    --gap-50: clamp(25px, 5vw, 50px);
 }
 
-.App-link {
-  color: #61dafb;
+/* CURSOR POINTER */
+button, i, svg, li {
+    cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* MAX WIDTH */
+.max-width {
+    max-width: 1200px;
+    margin: auto;
+    transition: all .3s ease;
+}
+
+/* DISPLAY UTILITIES */
+.display-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.none { display: none; }
+.block { display: block; }
+
+
+/* ?! button */
+
+.btn{
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: 1px solid var(--primary-color);
+    border-radius: 7px;
+    font-size: var(--font-size-20);
+    font-weight: var(--font-weight-400);
+    transition: all .3s ease;
+}
+.btn:hover{
+    background-color: transparent;
+    color: var(--primary-color);
+    transform: translateY(-5px);
+
 }
