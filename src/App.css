@@ -101,6 +101,6 @@ button, i, svg, li {
 .btn:hover{
     background-color: transparent;
     color: var(--primary-color);
-    transform: translateY(-5px);
+    transform: translateX(10px);
 
 }

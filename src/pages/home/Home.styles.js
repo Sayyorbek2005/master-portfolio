@@ -96,13 +96,8 @@ export const HomeContainer = styled.div`
   &:hover{
     transform: translateY(-5px);
   }
-
-  
 }
  }
-
-
-
     .home-right{
       margin-top: 50px;
     }
