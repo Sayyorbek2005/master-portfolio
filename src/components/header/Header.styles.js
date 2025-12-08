@@ -22,7 +22,7 @@ export const HeaderContainer = styled.div`
   }
 
   .logo h1 {
-    color: var(--black);
+    color: var(--primary-color);
     cursor: pointer;
     font-weight: var(--font-weight-600);
     transition: 0.3s;
