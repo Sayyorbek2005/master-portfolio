@@ -6,9 +6,9 @@ export const HeaderContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 999 !important;
+  z-index: 999;
   background-color: var(--white);
-  box-shadow: 0px 3px 5px var(--shadow-color);
+  box-shadow: 0 3px 5px rgba(0,0,0,0.1);
 
   .max-width {
     padding: 0 20px;
@@ -16,75 +16,56 @@ export const HeaderContainer = styled.div`
 
   .header-cont {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: var(--gap-50);
+    align-items: center;
   }
 
-  /* === LOGO === */
   .logo h1 {
     color: var(--primary-color);
-    font-weight: var(--font-weight-600);
+    font-weight: 600;
     cursor: pointer;
     transition: 0.3s;
-
-    &:hover {
-      color: var(--primary-color);
-      opacity: 0.7;
-    }
+    &:hover { opacity: 0.7; }
   }
 
-  /* === NAV LIST === */
   .nav-list {
-    list-style: none;
     display: flex;
-    align-items: center;
-    gap: var(--gap-40);
+    list-style: none;
+    gap: 30px;
   }
 
   .nav-list li {
-    font-size: var(--font-size-18);
-    font-weight: var(--font-weight-400);
-    color: var(--black);
     cursor: pointer;
-    border-bottom: 1.5px solid transparent;
+    color: var(--black);
+    font-weight: 400;
     transition: 0.3s;
-
-    &:hover {
-      color: var(--primary-color);
-      border-bottom-color: var(--primary-color);
-    }
+    &:hover { color: var(--primary-color); }
   }
 
-  /* === ICONS WRAPPER === */
   .icons {
     position: relative;
     display: flex;
-    align-items: center;
-    gap: var(--gap-20);
+    gap: 15px;
   }
 
   .icons svg {
-    font-size: var(--font-size-25);
+    font-size: 25px;
     cursor: pointer;
     color: var(--black);
     transition: 0.3s;
-
-    &:hover {
-      color: var(--primary-color);
-    }
+    &:hover { color: var(--primary-color); }
   }
 
-  /* === COLOR FILTER MODAL (styled-components bilan boshqariladi) === */
+  /* COLOR MODAL */
   .color-filter-modal {
     position: absolute;
     top: 40px;
     right: 0;
     background: #fff;
-    padding: 15px;
+    padding: 12px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    display: ${({ mode }) => (mode ? "grid" : "none")};
+    display: ${({ colorModal }) => (colorModal ? "grid" : "none")};
     grid-template-columns: repeat(3, 30px);
     gap: 10px;
     z-index: 999;
@@ -104,47 +85,39 @@ export const HeaderContainer = styled.div`
   .purple { background: #6f42c1; }
   .orange { background: #fd7e14; }
 
-  /* === RESPONSIVE === */
-  @media (max-width: 800px) {
-    .nav-list {
-      display: none;
-    }
-
-    .menu-icon {
-      display: block !important;
-    }
-
-    .icons > svg{
-      font-size: var(--font-size-35);
-    }
-
-
-    .responsive-navigation-bar {
-      background-color: var(--white);
-      /* background-color: #2563eb; */
-      padding: var(--gap-20);
-      line-height: 50px;
-      box-shadow: 0px 3px 5px var(--shadow-color);
-     display: block;
-      flex-direction: column;
-      width: 200px;
-      position: fixed;
-      top: 60px;
-      right: 0px;
-      bottom: 0px;
-      z-index: 700;
-  
-      li {
-        font-size: var(--font-size-30);
-      }
-  
-    } 
+  /* LANGUAGE MODAL */
+  .lang-modal {
+    position: absolute;
+    top: 55px;
+    right: -20px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    display: ${({ langModal }) => (langModal ? "flex" : "none")};
+    flex-direction: column;
+    gap: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    z-index: 999;
+    width: 150px;
+    text-align: start;
   }
 
-  .menu-icon {
-    display: none;
+  .lang-modal button {
+    text-align: start;
+
+    padding: 6px 10px;
+    font-size: var(--font-size-18);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #fff;
+    transition: 0.2s;
+    &:hover {
+      background: var(--primary-color);
+      color: #fff;
+    }
   }
 
-
-
+  /* MENU ICON */
+  .menu-icon { display: none; cursor: pointer; }
 `;
