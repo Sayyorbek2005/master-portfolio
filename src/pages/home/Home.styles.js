@@ -147,6 +147,7 @@ export const HomeContainer = styled.div`
   @media (max-width: 550px) {
     gap: 25px;
     padding: 10px;
+    top: 35px;
 
     .home-left h1 {
       font-size: 26px;
@@ -163,7 +164,15 @@ export const HomeContainer = styled.div`
     .home-right .box {
       width: 230px;
       height: 230px;
-      border-radius: 60px;
+      border-radius: 50px;
     }
   }
+   @media (max-width: 450px) {
+    .home-right > .box{
+      width: 160px;
+      height: 160px;
+      border-radius: 35px;
+    }
+  }
+
 `;

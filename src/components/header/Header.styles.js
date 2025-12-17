@@ -84,4 +84,5 @@ export const HeaderContainer = styled.div`
     .nav-list { display: none; }
     .menu-icon { display: block; }
   }
+
 `;
