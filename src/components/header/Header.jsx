@@ -1,4 +1,4 @@
-import { RiMenuUnfold2Fill } from "react-icons/ri";
+import { RiMenuUnfold2Fill, RiCloseFill } from "react-icons/ri";
 import { IoLanguage, IoColorFilterOutline } from "react-icons/io5";
 import { HeaderContainer } from "./Header.styles";
 import { useState } from "react";
@@ -6,37 +6,28 @@ import { useState } from "react";
 const Header = ({ lang, setLang }) => {
   const [colorModal, setColorModal] = useState(false);
   const [langModal, setLangModal] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // Rang almashtiruvchi funksiya
   const changeColor = (color) => {
-    // --primary-color CSS variable ni o'zgartirish
     document.documentElement.style.setProperty("--primary-color", color);
     setColorModal(false);
   };
 
-  // Tilni o'zgartirish
   const changeLanguage = (selected) => {
     setLang(selected);
     setLangModal(false);
-  };
-
-  // Responsive menu
-  const toggleMenu = () => {
-    const nav = document.querySelector(".responsive-navigation-bar");
-    nav.style.display = nav.style.display === "flex" ? "none" : "flex";
   };
 
   return (
     <HeaderContainer colorModal={colorModal} langModal={langModal}>
       <div className="max-width">
         <div className="header-cont">
-          {/* Logo */}
           <div className="logo">
             <h1>Sayyorbek</h1>
           </div>
 
-          {/* Nav list */}
-          <ul className="nav-list responsive-navigation-bar">
+          {/* Desktop Nav */}
+          <ul className="nav-list">
             <li>{lang === "uz" ? "Bosh sahifa" : lang === "ru" ? "Главная" : "Home"}</li>
             <li>{lang === "uz" ? "Men haqimda" : lang === "ru" ? "Обо мне" : "About"}</li>
             <li>{lang === "uz" ? "Ko‘nikmalar" : lang === "ru" ? "Навыки" : "Skills"}</li>
@@ -47,9 +38,13 @@ const Header = ({ lang, setLang }) => {
 
           {/* Icons */}
           <div className="icons">
-            {/* Color filter */}
             <IoColorFilterOutline onClick={() => setColorModal(!colorModal)} />
+            <IoLanguage onClick={() => setLangModal(!langModal)} />
+            <div className="menu-icon" onClick={() => setSidebarOpen(!sidebarOpen)}>
+              {sidebarOpen ? <RiCloseFill /> : <RiMenuUnfold2Fill />}
+            </div>
 
+            {/* Color modal */}
             <div className="color-filter-modal">
               <div className="color red" onClick={() => changeColor("#ff6347")}></div>
               <div className="color blue" onClick={() => changeColor("#2563eb")}></div>
@@ -59,18 +54,26 @@ const Header = ({ lang, setLang }) => {
               <div className="color orange" onClick={() => changeColor("#fd7e14")}></div>
             </div>
 
-            {/* Language */}
-            <IoLanguage onClick={() => setLangModal(!langModal)} />
+            {/* Language modal */}
             <div className="lang-modal">
               <button onClick={() => changeLanguage("uz")}>🇺🇿 Uzbek</button>
               <button onClick={() => changeLanguage("en")}>🇬🇧 English</button>
               <button onClick={() => changeLanguage("ru")}>🇷🇺 Russian</button>
             </div>
-
-            {/* Responsive menu */}
-            <RiMenuUnfold2Fill className="menu-icon" onClick={toggleMenu} />
           </div>
         </div>
+      </div>
+
+      {/* Sidebar */}
+      <div className={`sidebar ${sidebarOpen ? "open" : ""}`}>
+        <ul>
+          <li onClick={() => setSidebarOpen(false)}>{lang === "uz" ? "Bosh sahifa" : lang === "ru" ? "Главная" : "Home"}</li>
+          <li onClick={() => setSidebarOpen(false)}>{lang === "uz" ? "Men haqimda" : lang === "ru" ? "Обо мне" : "About"}</li>
+          <li onClick={() => setSidebarOpen(false)}>{lang === "uz" ? "Ko‘nikmalar" : lang === "ru" ? "Навыки" : "Skills"}</li>
+          <li onClick={() => setSidebarOpen(false)}>{lang === "uz" ? "Xizmatlar" : lang === "ru" ? "Услуги" : "Services"}</li>
+          <li onClick={() => setSidebarOpen(false)}>Portfolio</li>
+          <li onClick={() => setSidebarOpen(false)}>{lang === "uz" ? "Aloqa" : lang === "ru" ? "Контакты" : "Contact"}</li>
+        </ul>
       </div>
     </HeaderContainer>
   );

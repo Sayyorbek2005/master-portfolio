@@ -6,78 +6,40 @@ export const HeaderContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  background: #fff;
   z-index: 999;
-  background-color: var(--white);
   box-shadow: 0 3px 5px rgba(0,0,0,0.1);
 
-  .max-width {
-    padding: 0 20px;
-  }
+  .max-width { padding: 0 20px; }
 
-  .header-cont {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  .header-cont { display: flex; justify-content: space-between; align-items: center; }
 
-  .logo h1 {
-    color: var(--primary-color);
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-    &:hover { opacity: 0.7; }
-  }
+  .logo h1 { color: var(--primary-color); cursor: pointer; }
 
-  .nav-list {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-  }
+  .nav-list { display: flex; gap: 30px; list-style: none; }
+  .nav-list li { cursor: pointer; transition: 0.3s; &:hover { color: var(--primary-color); } }
 
-  .nav-list li {
-    cursor: pointer;
-    color: var(--black);
-    font-weight: 400;
-    transition: 0.3s;
-    &:hover { color: var(--primary-color); }
-  }
+  .icons { display: flex; gap: 15px; position: relative; }
+  .icons svg { font-size: 25px; cursor: pointer; }
 
-  .icons {
-    position: relative;
-    display: flex;
-    gap: 15px;
-  }
-
-  .icons svg {
-    font-size: 25px;
-    cursor: pointer;
-    color: var(--black);
-    transition: 0.3s;
-    &:hover { color: var(--primary-color); }
-  }
+  .menu-icon { display: none; cursor: pointer; }
 
   /* COLOR MODAL */
   .color-filter-modal {
     position: absolute;
     top: 40px;
     right: 0;
+    display: ${({ colorModal }) => (colorModal ? "grid" : "none")};
+    grid-template-columns: repeat(3, 30px);
+    gap: 10px;
     background: #fff;
     padding: 12px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    display: ${({ colorModal }) => (colorModal ? "grid" : "none")};
-    grid-template-columns: repeat(3, 30px);
-    gap: 10px;
-    z-index: 999;
+    z-index: 1500;
   }
 
-  .color {
-    width: 30px;
-    height: 30px;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-
+  .color { width: 30px; height: 30px; border-radius: 6px; cursor: pointer; }
   .red { background: #ff6347; }
   .blue { background: #2563eb; }
   .green { background: #28a745; }
@@ -90,34 +52,36 @@ export const HeaderContainer = styled.div`
     position: absolute;
     top: 55px;
     right: -20px;
-    background: #fff;
-    padding: 10px;
-    border-radius: 10px;
     display: ${({ langModal }) => (langModal ? "flex" : "none")};
     flex-direction: column;
     gap: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    z-index: 999;
     width: 150px;
-    text-align: start;
-  }
-
-  .lang-modal button {
-    text-align: start;
-
-    padding: 6px 10px;
-    font-size: var(--font-size-18);
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
     background: #fff;
-    transition: 0.2s;
-    &:hover {
-      background: var(--primary-color);
-      color: #fff;
-    }
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    z-index: 1500;
   }
+  .lang-modal button { padding: 6px 10px; border: none; border-radius: 8px; cursor: pointer; background: #fff; text-align: start; transition: 0.2s; &:hover { background: var(--primary-color); color: #fff; } }
 
-  /* MENU ICON */
-  .menu-icon { display: none; cursor: pointer; }
+  /* SIDEBAR */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: -280px;
+    width: 280px;
+    height: 100vh;
+    background: #fff;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+    transition: 0.3s ease;
+    z-index: 1200;
+    padding: 20px;
+  }
+  .sidebar.open { right: 0; }
+  .sidebar ul { list-style: none; padding-left: 0; display: flex; flex-direction: column; gap: 20px; font-size: 18px; }
+
+  @media (max-width: 900px) {
+    .nav-list { display: none; }
+    .menu-icon { display: block; }
+  }
 `;
