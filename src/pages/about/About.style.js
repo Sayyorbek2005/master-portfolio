@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const AboutContainer = styled.section`
   width: 100%;
   min-height: calc(100vh - 60px);
-  padding: 40px 20px;
+  padding: 70px 20px 40px 20px;
 
   /* ================= TITLE ================= */
   .title {
