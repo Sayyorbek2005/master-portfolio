@@ -34,6 +34,19 @@ const Home = ({ lang }) => {
     }]
   };
 
+  // ? open github
+   const openGithub = () => {
+    window.open("https://github.com/Sayyorbek2005", "_blank");
+  };
+
+  const openTelegram = () => {
+    window.open("https://t.me/Khalikov_Salih", "_blank")
+  }
+  
+  const openEmail = () => {
+    window.open("https://xoliqovsayyorbek@gmail.com")
+  }
+
 
   return (
     <div className="max-width">
@@ -42,9 +55,9 @@ const Home = ({ lang }) => {
 
         {/* Social icons */}
         <div className="bar display-flex">
-          <FiGithub />
-          <MdOutlineMarkEmailUnread />
-          <FaTelegramPlane />
+          <FiGithub onClick={openGithub} />
+          <MdOutlineMarkEmailUnread onClick={openEmail} />
+          <FaTelegramPlane onClick={openTelegram} />
         </div>
 
 

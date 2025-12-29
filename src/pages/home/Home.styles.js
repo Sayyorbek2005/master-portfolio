@@ -7,9 +7,9 @@ export const HomeContainer = styled.div`
   min-height: calc(100vh - 60px);
   padding: 40px 20px;
   display: flex;
-  /* justify-content: space-around; */
   align-items: center;
   gap: var(--gap-50);
+  margin-bottom: 60px;
 
   /* LEFT SIDE */
   .home-left {
@@ -41,6 +41,7 @@ export const HomeContainer = styled.div`
   .info-cont {
     display: flex;
     justify-content: space-around;
+    gap: var(--gap-50);
     margin-top: 20px;
     flex-wrap: wrap;
   }

@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import './App.css';
+import About from './pages/about/About';
 
 function App() {
   const [lang, setLang] = useState("en"); // Global til state
@@ -16,9 +17,11 @@ function App() {
       <Header lang={lang} setLang={setLang} />
 
       {/* Router */}
-      <Routes>
+      {/* <Routes>
         <Route path='/' element={<Home lang={lang} />} />
-      </Routes>
+      </Routes> */}
+      <Home lang={lang} />
+      <About />
     </div>
   );
 }
