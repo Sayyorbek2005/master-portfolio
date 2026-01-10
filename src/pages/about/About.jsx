@@ -1,5 +1,8 @@
 import { AboutContainer } from "./About.style";
 import AboutImg from "../../assets/m.jpg";
+// ? icons
+import { FaArrowRightLong } from "react-icons/fa6";
+
 
 const About = () => {
   return (
@@ -11,14 +14,14 @@ const About = () => {
             <p>My introduction</p>
           </div>
 
-          <div className="about-content">
+          <div className="about-content display-flex">
             <div className="about-left">
               <img src={AboutImg} alt="My profile" />
             </div>
 
             <div className="about-right">
               <p className="description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla vero nisi velit harum quibusdam similique non sed nihil aspernatur corporis!
+               Men zamonaviy veb-ilovalarni yaratishga ixtisoslashgan Full-Stack Dasturchiman, UI/UX, dizayn va to‘liq funksionallik, jumladan frontend va backend, SSL, domenlar, hosting va SEO ga alohida e’tibor qarataman. va saytlarni frontend arxitekturasini tuzish, saytlarni turlixil qurilmalarga moslashtirib beraman. 
               </p>
 
               <div className="right-box-bar">
@@ -36,7 +39,8 @@ const About = () => {
                 </div>
               </div>
 
-              <button className="btn">Download CV</button>
+              <button className="btn display-flex">Download CV <FaArrowRightLong />
+              </button>
             </div>
           </div>
         </AboutContainer>

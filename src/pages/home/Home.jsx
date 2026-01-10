@@ -21,7 +21,8 @@ const Home = ({ lang }) => {
       name: "Sayyorbek",
       job: "Frontend Dasturchi",
       description:
-        "Men zamonaviy UI/UX, dizayn va funksionallikka ega saytlar yaratishga ixtisoslashgan Frontend dasturchiman. SSL, domen, hosting va SEO bilan ham ishlayman.",
+        // "Men zamonaviy UI/UX, dizayn va funksionallikka ega saytlar yaratishga ixtisoslashgan Frontend dasturchiman. SSL, domen, hosting va SEO bilan ham ishlayman.",
+        "Men zamonaviy veb-ilovalarni yaratishga ixtisoslashgan Full-Stack Dasturchiman, UI/UX, dizayn va to‘liq funksionallik, jumladan frontend va backend, SSL, domenlar, hosting va SEO ga alohida e’tibor qarataman. va saytlarni frontend arxitekturasini tuzish, saytlarni turlixil qurilmalarga moslashtirib beraman.",
       img: myPhoto,
     }],
     ru: [{

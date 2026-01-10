@@ -4,26 +4,24 @@ export const HomeContainer = styled.div`
   position: relative;
   top: 60px;
   width: 100%;
-  min-height: calc(100vh - 60px);
-  padding: 40px 20px;
-  display: flex;
-  align-items: center;
-  gap: var(--gap-50);
-  margin-bottom: 60px;
+  height:100vh;
+  padding: 20px 20px;
+  gap: var(--gap-20);
+
 
   /* LEFT SIDE */
   .home-left {
     flex: 1;
-    max-width: 60%;
+    max-width: 50%;
 
     h1 {
-      font-size: clamp(28px, 5vw, 40px);
+      font-size: var(--font-size-40);
       font-weight: var(--font-weight-600);
       color: var(--black);
     }
 
     h2 {
-      font-size: clamp(22px, 4vw, 30px);
+      font-size: var(--font-size-30);
       font-weight: var(--font-weight-500);
       color: var(--primary-color);
       margin-top: 10px;
@@ -31,7 +29,7 @@ export const HomeContainer = styled.div`
 
     p {
       margin-top: 15px;
-      font-size: clamp(15px, 2.5vw, 18px);
+      font-size: var(--font-size-18);
       line-height: 1.6;
       color: var(--gray);
       max-width: 500px;
@@ -53,7 +51,7 @@ export const HomeContainer = styled.div`
     gap: var(--gap-10);
 
     svg {
-      font-size: clamp(25px, 4vw, 35px);
+      font-size: var(--font-size-35);
       color: var(--primary-color);
       transition: all 0.3s ease;
       padding: 3px;

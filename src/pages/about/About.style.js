@@ -2,28 +2,27 @@ import styled from "styled-components";
 
 export const AboutContainer = styled.section`
   width: 100%;
-  min-height: calc(100vh - 60px);
-  padding: 70px 20px 40px 20px;
-
+  padding: 40px 20px;
+  height: 100vh;
+  padding: 150px 20px;
   /* ================= TITLE ================= */
   .title {
     text-align: center;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 
     h1 {
       font-size: clamp(28px, 5vw, 40px);
+      color: var(--primary-color);
     }
 
     p {
-      color: var(--gray);
+      color: var(--black);
       font-size: clamp(16px, 1.2vw, 18px);
     }
   }
 
   /* ================= CONTENT ================= */
   .about-content {
-    display: flex;
-    justify-content: center;
     gap: var(--gap-20);
   }
 
@@ -77,6 +76,10 @@ export const AboutContainer = styled.section`
       }
 
     }
+
+  } 
+  .about-right .btn{
+    gap: var(--gap-10);
   }
 
   /* ================= RESPONSIVE ================= */
