@@ -43,6 +43,9 @@ p, button, li, h1, h2, h3, h4, span, b {
     --font-size-60: clamp(40px, 6vw, 60px);
 
     /* font weights */
+    --font-weight-100: 100;
+    --font-weight-200: 200;
+    --font-weight-300: 300;
     --font-weight-400: 400;
     --font-weight-500: 500;
     --font-weight-600: 600;
@@ -77,6 +80,23 @@ button, i, svg, li {
     justify-content: center;
 }
 
+.gap-10{
+    gap: var(--gap-10);
+}
+.gap-20{
+    gap: var(--gap-20);
+}
+.gap-30{
+    gap: var(--gap-30);
+}
+.gap-40{        
+    gap: var(--gap-40);
+}
+.gap-50{
+    gap: var(--gap-50);
+}
+
+
 .flex-wrap {
     display: flex;
     flex-wrap: wrap;
@@ -106,3 +126,19 @@ button, i, svg, li {
 }
 
 /* ?  */
+
+.ant-modal-footer{
+      display: none;
+    }   
+
+    .ant-modal-title{
+      font-size: var(--font-size-25) !important;
+      font-weight: var(--font-weight-500) !important;
+    color: var(--primary-color) !important;
+    }
+
+    .ant-modal-body{
+        font-size: var(--font-size-18) !important;
+        color: var(--gray) !important;
+        line-height: 30px !important;
+    }

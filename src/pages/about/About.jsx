@@ -4,7 +4,7 @@ import AboutImg from "../../assets/m.jpg";
 import { FaArrowRightLong } from "react-icons/fa6";
 
 
-const About = () => {
+const About = ({ lang }) => {
   return (
     <div className="about">
       <div className="max-width">
