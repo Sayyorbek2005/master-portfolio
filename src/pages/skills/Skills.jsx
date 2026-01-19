@@ -101,7 +101,8 @@ const Skills = ({ lang }) => {
                 <div className="texnologies">
                   <h2>Next.js</h2>
                   <div>
-                    <div className="a a-7">
+                    <div className="a a-7"> 
+                      
                       <div className="b"></div>
                     </div>
 

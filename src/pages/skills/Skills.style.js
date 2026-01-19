@@ -17,7 +17,7 @@ export const SkillsContainer = styled.section`
     }
   }
 
-    /* ================= CONTENT ================= */
+    /* ================= CONTENT ================== */
 
     .skills-content {
       position: relative;
