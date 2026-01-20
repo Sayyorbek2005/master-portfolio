@@ -51,11 +51,11 @@ const Home = ({ lang }) => {
 
   return (
     <div className="max-width">
-      <HomeContainer className="home display-flex">
+      <HomeContainer id='home' className="home display-flex">
 
 
         {/* Social icons */}
-        <div className="bar display-flex">
+        <div className="bar display-flex" data-aos="fade-right">
           <FiGithub onClick={openGithub} />
           <MdOutlineMarkEmailUnread onClick={openEmail} />
           <FaTelegramPlane onClick={openTelegram} />
@@ -66,14 +66,14 @@ const Home = ({ lang }) => {
           <div className="info-cont display-flex" key={item.id}>
 
 
-            <div className="home-left">
+            <div className="home-left" data-aos="fade-right">
               <h1>{item.name}</h1>
               <h2>{item.job}</h2>
               <p>{item.description}</p>
             </div>
 
 
-            <div className="home-right display-flex">
+            <div className="home-right display-flex" data-aos="fade-left">
               <div className="box display-flex">
                 <img src={item.img} alt="my photo" />
               </div>

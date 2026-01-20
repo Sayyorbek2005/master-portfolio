@@ -85,4 +85,12 @@ export const HeaderContainer = styled.div`
     .menu-icon { display: block; }
   }
 
+  .nav-list li.active,
+.sidebar ul li.active {
+  color: var(--primary-color); /* yoki boshqa rang */
+  transform: translateY(-5px);
+  border-bottom: 2px solid var(--primary-color); /* optional */
+}
+
+
 `;

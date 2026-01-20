@@ -47,9 +47,9 @@ const Services = () => {
   ];
 
   return (
-    <Wrapper>
+    <Wrapper id="services" data-aos="fade-up">
       {/* Qualification / Timeline */}
-      <div className="title">
+      <div  className="title">
         <h1>Qualification</h1>
         <p>My personal journey</p>
       </div>
@@ -102,7 +102,7 @@ const Services = () => {
               </>
             ),
             children: (
-              <TimelineWrapper>
+              <TimelineWrapper >
                 <Row justify="center">
                   <Col xs={24} md={14}>
                     <Timeline mode="alternate">
@@ -127,7 +127,7 @@ const Services = () => {
       <hr />
 
       {/* Services / Cards */}
-      <ServicesCards>
+      <ServicesCards data-aos="fade-up">
         <div className="title">
           <h1>Services</h1>
           <p>What I Offer</p>

@@ -7,7 +7,7 @@ const Skills = ({ lang }) => {
   const [activeSkill, setActiveSkill] = useState(1);
 
   return (
-    <div className='skills'>
+    <div id="skills" className='skills' data-aos="fade-up">
       <div className="max-width">
         <SkillsContainer>
           <h1 className="skills-title">My Skills</h1>

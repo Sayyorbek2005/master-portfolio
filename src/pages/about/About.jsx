@@ -6,7 +6,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 
 const About = ({ lang }) => {
   return (
-    <div className="about">
+    <div id="about" className="about">
       <div className="max-width">
         <AboutContainer>
           <div className="title">
@@ -15,11 +15,11 @@ const About = ({ lang }) => {
           </div>
 
           <div className="about-content display-flex">
-            <div className="about-left">
+            <div className="about-left" data-aos="fade-right">
               <img src={AboutImg} alt="My profile" />
             </div>
 
-            <div className="about-right">
+            <div className="about-right"  data-aos="fade-left">
               <p className="description">
                Men zamonaviy veb-ilovalarni yaratishga ixtisoslashgan Full-Stack Dasturchiman, UI/UX, dizayn va to‘liq funksionallik, jumladan frontend va backend, SSL, domenlar, hosting va SEO ga alohida e’tibor qarataman. va saytlarni frontend arxitekturasini tuzish, saytlarni turlixil qurilmalarga moslashtirib beraman. 
               </p>
