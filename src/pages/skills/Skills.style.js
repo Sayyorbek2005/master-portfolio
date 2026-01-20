@@ -13,7 +13,7 @@ export const SkillsContainer = styled.section`
 
     p {
       color: var(--black);
-      font-size: clamp(16px, 1.2vw, 18px);
+       font-size: clamp(16px, 1.2vw, 18px);
     }
   }
 

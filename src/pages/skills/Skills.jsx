@@ -93,7 +93,7 @@ const Skills = ({ lang }) => {
                   <h2>Vite</h2>
                   <div>
                     <div className="a a-9">
-                      <div className="b"></div>
+                      <div className="b"> </div>
                     </div>
 
                   </div>
@@ -102,7 +102,7 @@ const Skills = ({ lang }) => {
                   <h2>Next.js</h2>
                   <div>
                     <div className="a a-7"> 
-                      
+
                       <div className="b"></div>
                     </div>
 
