@@ -1,120 +1,136 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.section`
-   width: 100%;
-  padding: 40px 20px;
-  height: 100vh;
-  padding: 150px 20px;
-  /* ================= TITLE ================= */
+  width: 100%;
+  padding: 100px 20px;
+  min-height: 100vh;
+
   .title {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 
     h1 {
-      font-size: var(--font-size-30);
+      font-size: clamp(24px, 4vw, 32px);
       color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 10px;
     }
 
     p {
       color: var(--gray);
-      font-size: var(--font-size-20);
+      font-size: 16px;
+      letter-spacing: 1px;
     }
   }
-`;
 
-export const Header = styled.div`
-  text-align: center;
-  margin-bottom: 50px;
-`;
-
-export const Subtitle = styled.p`
-  color: var(--gray);
-  margin-top: 10px;
+  /* Ant Design Tabs custom styles */
+  .ant-tabs-nav::before { border-bottom: none !important; }
+  .ant-tabs-tab-active .ant-tabs-tab-btn { color: var(--primary-color) !important; }
+  .ant-tabs-ink-bar { background: var(--primary-color) !important; }
 `;
 
 export const TimelineWrapper = styled.div`
-  margin-top: 50px;
+  margin-top: 40px;
+  padding: 20px;
 
+  /* Timeline line color */
   .ant-timeline-item-tail {
-    border-color: var(--primary-color);
+    border-inline-start: 2px solid var(--primary-color) !important;
   }
 
+  /* Timeline dot color */
   .ant-timeline-item-head {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
+    background-color: var(--white);
+    border-color: var(--primary-color) !important;
+    border-width: 2px;
+  }
+
+  .ant-typography {
+    margin-bottom: 0 !important;
   }
 `;
 
-
-
 export const ServicesCards = styled.div`
- padding: 50px 0px;
+  .services-cont {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+  }
 
   .service-box {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    padding: 20px 20px 50px 20px;
-    max-width: 250px;
-    width: 100%;
-    min-height: 350px;
-      height: 100%;
-    text-align: left;
-    transition: all 0.4s ease;
+    background: var(--white);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border-radius: 15px;
+    padding: 40px 30px;
+    min-height: 280px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
-    line-height: 35px;
+    border: 1px solid rgba(0, 0, 0, 0.02);
 
-    &:hover {
-      background-color: var(--primary-color);
-      color: var(--white);
-      transform: translateY(-10px);
-    }
-    &:hover svg{
-      color: var(--white);
-    }
-    
-
-    svg{
-      font-size: var(--font-size-40);
+    .icon-wrapper svg {
+      font-size: 40px;
       color: var(--primary-color);
-      transition: all 0.4s ease;
+      transition: 0.4s;
     }
 
     h1 {
-      margin-top: 20px;
-      font-size: var(--font-size-25);
-      font-weight: var(--font-weight-400);
-       transition: all 0.4s ease;
+      margin: 20px 0 15px;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--black);
+      transition: 0.4s;
     }
-    p{
-      font-size: var(--font-size-18);
-      font-weight: var(--font-weight-200);
-      color: var(--primary-color);
-       transition: all 0.4s ease;
-       justify-content: start;
-    
-       
-      svg{
-         font-size: var(--font-size-18);
-      font-weight: var(--font-weight-200);
-      color: var(--primary-color);
-       transition: all 0.4s ease;
 
+    p {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary-color);
+      font-size: 15px;
+      transition: 0.4s;
+
+      svg {
+        transition: 0.4s;
+      }
+    }
+
+    &:hover {
+      background-color: var(--primary-color);
+      transform: translateY(-12px);
+      box-shadow: 0 20px 40px rgba(var(--primary-rgb), 0.3);
+
+      h1, p, .icon-wrapper svg {
+        color: var(--white);
       }
 
+      p svg {
+        transform: translateX(8px);
+        color: var(--white);
+      }
     }
-
-    &:hover p{
-      color: var(--white);
-    }
-
-    &:hover p > svg{
-      transform: translateX(10px);
-    }
-
-
   }
-  
-`;    
+
+  /* Modal Styles inside styled-components */
+  .modal-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    
+    .bullet {
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+    p {
+      margin: 0;
+      font-size: 15px;
+      color: #555;
+    }
+  }
+`;

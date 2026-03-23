@@ -26,16 +26,16 @@ const About = ({ lang }) => {
 
               <div className="right-box-bar">
                 <div className="stat-box">
-                  <h2>+80</h2>
-                  <p>Lorem, ipsum.</p>
+                  <h2>4+</h2>
+                  <p>Yillik tajribam</p>
                 </div>
                 <div className="stat-box">
-                  <h2>+80</h2>
-                  <p>Lorem, ipsum.</p>
+                  <h2>15+</h2>
+                  <p>Real loyihalarim</p>
                 </div>
                 <div className="stat-box">
-                  <h2>+80</h2>
-                  <p>Lorem, ipsum.</p>
+                  <h2>50+</h2>
+                  <p>O'quvchilarim</p>
                 </div>
               </div>
 

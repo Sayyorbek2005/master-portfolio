@@ -14,7 +14,7 @@ const Home = ({ lang }) => {
       job: "Frontend Developer",
       description:
         "I’m a Frontend Developer specializing in creating modern websites, focusing on UI/UX, design, and full functionality, including SSL, domains, hosting, and SEO.",
-      img: myPhoto,
+      image: myPhoto,
     }],
     uz: [{
       id: 1,
@@ -23,7 +23,7 @@ const Home = ({ lang }) => {
       description:
         // "Men zamonaviy UI/UX, dizayn va funksionallikka ega saytlar yaratishga ixtisoslashgan Frontend dasturchiman. SSL, domen, hosting va SEO bilan ham ishlayman.",
         "Men zamonaviy veb-ilovalarni yaratishga ixtisoslashgan Full-Stack Dasturchiman, UI/UX, dizayn va to‘liq funksionallik, jumladan frontend va backend, SSL, domenlar, hosting va SEO ga alohida e’tibor qarataman. va saytlarni frontend arxitekturasini tuzish, saytlarni turlixil qurilmalarga moslashtirib beraman.",
-      img: myPhoto,
+      image: myPhoto,
     }],
     ru: [{
       id: 1,
@@ -31,7 +31,7 @@ const Home = ({ lang }) => {
       job: "Фронтенд Разработчик",
       description:
         "Я фронтенд-разработчик, создающий современные сайты с упором на UI/UX, дизайн и функциональность. Работаю с SSL, доменами, хостингом и SEO.",
-      img: myPhoto,
+      image: myPhoto,
     }]
   };
 
@@ -75,7 +75,8 @@ const Home = ({ lang }) => {
 
             <div className="home-right display-flex" data-aos="fade-left">
               <div className="box display-flex">
-                <img src={item.img} alt="my photo" />
+                {/* <img src={item.img} alt="my photo" /> */}
+                <img src={item.image} alt="my photto" />
               </div>
             </div>
 
