@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
 import toast, { Toaster } from 'react-hot-toast';
 import { VscSend, VscMail, VscLocation, VscDeviceMobile } from "react-icons/vsc";
 import { ContactWrapper, ContactForm, InfoCards } from './Contact.style';
@@ -9,7 +8,7 @@ const Contact = ({ lang = 'en' }) => {
   const [loading, setLoading] = useState(false);
 
   // --- LUG'AT (DICTIONARY) ---
-  const t = {
+  const translations = {
     uz: {
       title: "Bog'lanish",
       subtitle: "Men bilan aloqa",
@@ -23,8 +22,8 @@ const Contact = ({ lang = 'en' }) => {
       messagePlace: "Xabaringiz",
       sendBtn: "Xabarni yuborish",
       sending: "Yuborilmoqda...",
-      success: "Xabaringiz muvaffaqiyatli yuborildi!",
-      error: "Xatolik yuz berdi, qaytadan urinib ko'ring."
+      success: "Xabaringiz Telegramga yuborildi!",
+      error: "Xatolik! Bot tokenini tekshiring."
     },
     en: {
       title: "Get In Touch",
@@ -39,8 +38,8 @@ const Contact = ({ lang = 'en' }) => {
       messagePlace: "Your Message",
       sendBtn: "Send Message",
       sending: "Sending...",
-      success: "Your message has been sent successfully!",
-      error: "An error occurred, please try again."
+      success: "Message sent to Telegram!",
+      error: "Error! Please check bot token."
     },
     ru: {
       title: "Связаться",
@@ -55,30 +54,60 @@ const Contact = ({ lang = 'en' }) => {
       messagePlace: "Ваше сообщение",
       sendBtn: "Отправить сообщение",
       sending: "Отправка...",
-      success: "Ваше сообщение успешно отправлено!",
-      error: "Произошла ошибка, попробуйте еще раз."
+      success: "Сообщение отправлено в Telegram!",
+      error: "Ошибка! Проверьте токен бота."
     }
-  }[lang] || { /* fallback to en */ };
+  };
 
-  const sendEmail = (e) => {
+  const t = translations[lang] || translations.en;
+
+  const sendMessageToTelegram = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    emailjs.sendForm(
-      'YOUR_SERVICE_ID', 
-      'YOUR_TEMPLATE_ID', 
-      form.current, 
-      'YOUR_PUBLIC_KEY'
-    )
-    .then(() => {
+    // --- SOZLAMALAR ---
+    const botToken = "8638764420:AAE3WhC2HHoz8NuSiszbinWUeL5qSGmccow"; // BotFather'dan olgan tokeningiz
+    const chatId = "1980510562"; // Siz yuborgan rasmdagi Chat ID
+
+    const formData = new FormData(form.current);
+    const data = {
+      name: formData.get('user_name'),
+      email: formData.get('user_email'),
+      subject: formData.get('subject'),
+      message: formData.get('message'),
+    };
+
+    const text = `
+📩 *Yangi xabar (Portfolio)*
+👤 *Ism:* ${data.name}
+📧 *Email:* ${data.email}
+📌 *Mavzu:* ${data.subject}
+📝 *Xabar:* ${data.message}
+    `;
+
+    try {
+      const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: text,
+          parse_mode: 'Markdown'
+        }),
+      });
+
+      if (response.ok) {
         toast.success(t.success);
         form.current.reset();
-    })
-    .catch((error) => {
-        toast.error(t.error);
-        console.log(error.text);
-    })
-    .finally(() => setLoading(false));
+      } else {
+        throw new Error("Telegram API error");
+      }
+    } catch (error) {
+      toast.error(t.error);
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -91,7 +120,6 @@ const Contact = ({ lang = 'en' }) => {
       </div>
 
       <div className="contact-container">
-        {/* Chap tomon: Kontakt ma'lumotlari */}
         <InfoCards>
           <div className="info-item" data-aos="fade-right">
             <VscDeviceMobile className="icon" />
@@ -116,8 +144,7 @@ const Contact = ({ lang = 'en' }) => {
           </div>
         </InfoCards>
 
-        {/* O'ng tomon: Aloqa formasi */}
-        <ContactForm ref={form} onSubmit={sendEmail} data-aos="fade-left">
+        <ContactForm ref={form} onSubmit={sendMessageToTelegram} data-aos="fade-left">
           <div className="input-group">
             <div className="input-box">
               <input type="text" name="user_name" placeholder={t.namePlace} required />
