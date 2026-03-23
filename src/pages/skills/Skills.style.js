@@ -91,6 +91,7 @@ export const SkillsContainer = styled.section`
 
   @media (max-width: 768px) {
     padding: 60px 10px;
+    margin-top: 350px;
     .skills-menu { gap: 15px; }
   }
 `;

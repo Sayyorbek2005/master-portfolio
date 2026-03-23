@@ -64,7 +64,7 @@ const Header = ({ lang, setLang }) => {
               {lang === "uz" ? "Xizmatlar" : lang === "ru" ? "Услуги" : "Services"}
             </li>
             <li className={activeSection === "portfolio" ? "active" : ""} onClick={() => scrollToSection("portfolio")}>
-              Portfolio
+               {lang === "uz" ? "Portfolio" : lang === "ru" ? "Портфолио" : "Portfolio"}
             </li>
             <li className={activeSection === "contact" ? "active" : ""} onClick={() => scrollToSection("contact")}>
               {lang === "uz" ? "Aloqa" : lang === "ru" ? "Контакты" : "Contact"}

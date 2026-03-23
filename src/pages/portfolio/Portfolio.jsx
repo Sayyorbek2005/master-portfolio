@@ -2,117 +2,89 @@ import React, { useState } from 'react';
 import { Wrapper, FilterMenu, ProjectGrid, ProjectCard } from './Portfolio.style';
 import { VscGithubAlt, VscLinkExternal } from "react-icons/vsc";
 
-const Portfolio = () => {
+const Portfolio = ({ lang = 'en' }) => {
   const [filter, setFilter] = useState('all');
 
-  // Middle/Strong Fullstack dasturchi uchun realistik loyihalar
-  const projects = [
-    {
-      id: 1,
-      title: "Enterprise CRM Platform",
-      category: "fullstack",
-      // Unsplash'dan yuqori sifatli dasturlash rasmlari
-      image: "https://images.unsplash.com/photo-1556155092-490a1ba16284?q=80&w=400&auto=format&fit=crop", 
-      tech: ["React", "Node.js", "PostgreSQL", "Socket.io"],
-      desc: "Katta hajmdagi mijozlar bazasi va real-vaqtda tahliliy ma'lumotlarni boshqarish tizimi.",
-      github: "#",
-      demo: "#"
+  // --- TRANSLATIONS ---
+  const translations = {
+    uz: {
+      title: "Oxirgi ishlar",
+      subtitle: "Portfolio",
+      filters: { all: "Hammasi", fullstack: "Fullstack", frontend: "Frontend", backend: "Backend" },
+      projects: [
+        { id: 1, title: "Korxona CRM platformasi", desc: "Katta hajmdagi mijozlar bazasi va real-vaqtda tahliliy ma'lumotlarni boshqarish tizimi." },
+        { id: 2, title: "SaaS loyihalarni boshqarish", desc: "Jamoalar uchun vazifalarni kuzatish va fayl almashish platformasi." },
+        { id: 3, title: "AI rasm generatori", desc: "Sun'iy intellekt yordamida rasm yaratish va obuna asosida sotish servisi." },
+        { id: 4, title: "E-Commerce MarketPlace", desc: "Murakkab filtrlash va to'lov tizimiga ega onlayn do'kon platformasi." },
+        { id: 5, title: "Real-vaqtli Chat ilovasi", desc: "Guruhli suhbatlar va foydalanuvchilar onlaynligini ko'rsatuvchi chat." },
+        { id: 6, title: "Blogging Platforma", desc: "Dasturchilar uchun maqolalar yozish va sharhlash platformasi." },
+        { id: 7, title: "React komponentlar kutubxonasi", desc: "Dizayn tizimlari uchun qayta ishlatiladigan UI komponentlar to'plami." },
+        { id: 8, title: "Kriptovalyuta Dashboard", desc: "Kriptovalyuta narxlarini real-vaqtda kuzatish va tahlil qilish." },
+        { id: 9, title: "Scalable API Gateway", desc: "Mikroservislar uchun xavfsizlik va so'rovlarni boshqarish shlyuzi." },
+        { id: 10, title: "Telegram Bot Analitika", desc: "Bot foydalanuvchilari xatti-harakatlarini tahlil qilish tizimi." }
+      ]
     },
-    {
-      id: 2,
-      title: "SaaS Project Management Tool",
-      category: "fullstack",
-      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=400&auto=format&fit=crop",
-      tech: ["Next.js", "TypeScript", "Prisma", "AWS S3"],
-      desc: "Jamoalar uchun vazifalarni kuzatish, fayl almashish va jadvallarni boshqarish platformasi (Jira analogi).",
-      github: "#",
-      demo: "#"
+    en: {
+      title: "Recent Works",
+      subtitle: "Portfolio",
+      filters: { all: "All", fullstack: "Fullstack", frontend: "Frontend", backend: "Backend" },
+      projects: [
+        { id: 1, title: "Enterprise CRM Platform", desc: "Large-scale customer base and real-time analytical data management system." },
+        { id: 2, title: "SaaS Project Management Tool", desc: "Task tracking, file sharing, and schedule management for teams." },
+        { id: 3, title: "AI Image Generator Portal", desc: "AI-powered image generation and subscription-based service." },
+        { id: 4, title: "E-Commerce MarketPlace", desc: "Online store platform with complex filtering and payment systems." },
+        { id: 5, title: "Real-Time Chat Application", desc: "Group chats, message statuses, and online presence tracking." },
+        { id: 6, title: "Dev.to Clone (Blogging)", desc: "A blogging platform for developers to write, comment, and like articles." },
+        { id: 7, title: "React Components Library", desc: "Reusable, tested, and documented UI component set for design systems." },
+        { id: 8, title: "Cryptocurrency Dashboard", desc: "Real-time cryptocurrency price tracking and graphical analysis." },
+        { id: 9, title: "Scalable API Gateway", desc: "Central gateway for security and request management for microservices." },
+        { id: 10, title: "Telegram Bot Analytics", desc: "System for analyzing user behavior in large-scale telegram bots." }
+      ]
     },
-    {
-      id: 3,
-      title: "AI Image Generator Portal",
-      category: "fullstack",
-      image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=400&auto=format&fit=crop",
-      tech: ["React", "OpenAI API", "Mongoose", "Stripe"],
-      desc: "Sun'iy intellekt yordamida rasm yaratish va ularni sotish imkoniyatiga ega obuna asosidagi servis.",
-      github: "#",
-      demo: "#"
-    },
-    {
-      id: 4,
-      title: "E-Commerce MarketPlace",
-      category: "fullstack",
-      image: "https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?q=80&w=400&auto=format&fit=crop",
-      tech: ["React", "Supabase", "Tailwind CSS", "Payme API"],
-      desc: "Murakkab filtrlash, savatcha va to'lov tizimiga ega onlayn do'kon platformasi.",
-      github: "#",
-      demo: "#"
-    },
-    {
-      id: 5,
-      title: "Real-Time Chat Application",
-      category: "fullstack",
-      image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=400&auto=format&fit=crop",
-      tech: ["React", "Node.js", "Redis", "MongoDB"],
-      desc: "Guruhli suhbatlar, xabar holatlari va foydalanuvchilar onlaynligini ko'rsatuvchi chat ilovasi.",
-      github: "#",
-      demo: "#"
-    },
-    {
-      id: 6,
-      title: "Dev.to Clone (Blogging Platform)",
-      category: "fullstack",
-      image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=400&auto=format&fit=crop",
-      tech: ["Next.js (App Router)", "MDX", "Cloudinary", "Auth.js"],
-      desc: "Dasturchilar uchun maqolalar yozish, sharhlash va yoqtirish imkoniyatiga ega blog platformasi.",
-      github: "#",
-      demo: "#"
-    },
-    {
-      id: 7,
-      title: "React Components Library",
-      category: "frontend",
-      image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=400&auto=format&fit=crop",
-      tech: ["React", "TypeScript", "Storybook", "Webpack"],
-      desc: "Dizayn tizimlari uchun qayta ishlatiladigan, testlangan va dökümantasyonlangan UI komponentlar to'plami.",
-      github: "#",
-      demo: "#"
-    },
-    {
-      id: 8,
-      title: "Cryptocurrency Dashboard",
-      category: "frontend",
-      image: "https://images.unsplash.com/photo-1621761191319-c6fb62004009?q=80&w=400&auto=format&fit=crop",
-      tech: ["React", "Chart.js", "CoinGecko API", "Framer Motion"],
-      desc: "Kriptovalyuta narxlarini real-vaqtda kuzatish va grafiklar orqali tahlil qilish interfeysi.",
-      github: "#",
-      demo: "#"
-    },
-    {
-      id: 9,
-      title: "Scalable API Gateway",
-      category: "backend",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=400&auto=format&fit=crop",
-      tech: ["Node.js", "Express", "JWT", "Rate Limiting"],
-      desc: "Mikroservislar uchun xavfsizlik, autentifikatsiya va so'rovlarni boshqarish markaziy shlyuzi.",
-      github: "#",
-      demo: "#"
-    },
-    {
-      id: 10,
-      title: "Telegram Bot Analytics",
-      category: "backend",
-      image: "https://images.unsplash.com/photo-1520004434532-6684164f378d?q=80&w=400&auto=format&fit=crop",
-      tech: ["Python", "Django", "Celery", "PostgreSQL"],
-      desc: "Katta hajmdagi bot foydalanuvchilari xatti-harakatlarini tahlil qilish va hisobotlar yaratish tizimi.",
-      github: "#",
-      demo: "#"
+    ru: {
+      title: "Последние работы",
+      subtitle: "Портфолио",
+      filters: { all: "Все", fullstack: "Fullstack", frontend: "Frontend", backend: "Backend" },
+      projects: [
+        { id: 1, title: "Корпоративная CRM платформа", desc: "Система управления большой базой клиентов и аналитикой в реальном времени." },
+        { id: 2, title: "SaaS управление проектами", desc: "Платформа для отслеживания задач и обмена файлами для команд." },
+        { id: 3, title: "AI Генератор изображений", desc: "Сервис создания изображений с помощью ИИ на основе подписки." },
+        { id: 4, title: "E-Commerce Маркетплейс", desc: "Платформа онлайн-магазина со сложной фильтрацией и платежной системой." },
+        { id: 5, title: "Чат в реальном времени", desc: "Приложение для чата с групповыми беседами и статусами пользователей." },
+        { id: 6, title: "Blogging Платформа", desc: "Платформа для написания статей и комментариев для разработчиков." },
+        { id: 7, title: "Библиотека React компонентов", desc: "Набор UI компонентов для систем дизайна." },
+        { id: 8, title: "Криптовалютный Dashboard", desc: "Отслеживание цен криптовалют и анализ через графики." },
+        { id: 9, title: "Scalable API Gateway", desc: "Центральный шлюз безопасности для микросервисов." },
+        { id: 10, title: "Аналитика Telegram ботов", desc: "Система анализа поведения пользователей в ботах." }
+      ]
     }
+  };
+
+  const t = translations[lang] || translations.en;
+
+  // --- STATIC PROJECT ASSETS (Images & Tech remain same) ---
+  const projectAssets = [
+    { id: 1, category: "fullstack", image: "https://images.unsplash.com/photo-1556155092-490a1ba16284?q=80&w=400&auto=format&fit=crop", tech: ["React", "Node.js", "PostgreSQL", "Socket.io"], github: "#", demo: "#" },
+    { id: 2, category: "fullstack", image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=400&auto=format&fit=crop", tech: ["Next.js", "TypeScript", "Prisma", "AWS S3"], github: "#", demo: "#" },
+    { id: 3, category: "fullstack", image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=400&auto=format&fit=crop", tech: ["React", "OpenAI API", "Mongoose", "Stripe"], github: "#", demo: "#" },
+    { id: 4, category: "fullstack", image: "https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?q=80&w=400&auto=format&fit=crop", tech: ["React", "Supabase", "Tailwind CSS", "Payme API"], github: "#", demo: "#" },
+    { id: 5, category: "fullstack", image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=400&auto=format&fit=crop", tech: ["React", "Node.js", "Redis", "MongoDB"], github: "#", demo: "#" },
+    { id: 6, category: "fullstack", image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=400&auto=format&fit=crop", tech: ["Next.js", "MDX", "Cloudinary", "Auth.js"], github: "#", demo: "#" },
+    { id: 7, category: "frontend", image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=400&auto=format&fit=crop", tech: ["React", "TypeScript", "Storybook", "Webpack"], github: "#", demo: "#" },
+    { id: 8, category: "frontend", image: "https://images.unsplash.com/photo-1621761191319-c6fb62004009?q=80&w=400&auto=format&fit=crop", tech: ["React", "Chart.js", "CoinGecko API", "Framer Motion"], github: "#", demo: "#" },
+    { id: 9, category: "backend", image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=400&auto=format&fit=crop", tech: ["Node.js", "Express", "JWT", "Rate Limiting"], github: "#", demo: "#" },
+    { id: 10, category: "backend", image: "https://images.unsplash.com/photo-1520004434532-6684164f378d?q=80&w=400&auto=format&fit=crop", tech: ["Python", "Django", "Celery", "PostgreSQL"], github: "#", demo: "#" }
   ];
 
+  // Merge translations with assets
+  const combinedProjects = t.projects.map(p => ({
+    ...p,
+    ...projectAssets.find(asset => asset.id === p.id)
+  }));
+
   const filteredProjects = filter === 'all' 
-    ? projects 
-    : projects.filter(p => p.category === filter);
+    ? combinedProjects 
+    : combinedProjects.filter(p => p.category === filter);
 
   const filterOptions = ['all', 'fullstack', 'frontend', 'backend'];
 
@@ -120,8 +92,8 @@ const Portfolio = () => {
     <Wrapper id="portfolio" data-aos="fade-up">
       <div className="max-width">
         <div className="title">
-          <h1>Recent Works</h1>
-          <p>Portfolio</p>
+          <h1>{t.title}</h1>
+          <p>{t.subtitle}</p>
         </div>
 
         <FilterMenu>
@@ -131,7 +103,7 @@ const Portfolio = () => {
               className={filter === cat ? 'active' : ''} 
               onClick={() => setFilter(cat)}
             >
-              {cat.charAt(0).toUpperCase() + cat.slice(1)}
+              {t.filters[cat]}
             </button>
           ))}
         </FilterMenu>
@@ -140,7 +112,6 @@ const Portfolio = () => {
           {filteredProjects.map((project) => (
             <ProjectCard key={project.id} data-aos="zoom-in">
               <div className="img-box">
-                {/* Rasmlar endi aniq ishlaydi */}
                 <img src={project.image} alt={project.title} loading="lazy" />
                 <div className="overlay">
                   <a href={project.github} target="_blank" rel="noreferrer" title="View Code">
